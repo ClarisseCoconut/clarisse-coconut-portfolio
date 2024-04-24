@@ -13,19 +13,9 @@
 				"value": "what",
 				"type": "Text"
 			},
-			"job_title_1": {
+			"job_title": {
 				"__TYPE__": "FieldContent",
-				"value": "stream",
-				"type": "Text"
-			},
-			"job_title_2": {
-				"__TYPE__": "FieldContent",
-				"value": "make",
-				"type": "Text"
-			},
-			"job_title_3": {
-				"__TYPE__": "FieldContent",
-				"value": "stems",
+				"value": "speed",
 				"type": "Text"
 			}
 		},

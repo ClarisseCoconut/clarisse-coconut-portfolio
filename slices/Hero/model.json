@@ -26,24 +26,10 @@
             "placeholder": ""
           }
         },
-        "job_title_1": {
+        "job_title": {
           "type": "Text",
           "config": {
-            "label": "Job Title 1",
-            "placeholder": ""
-          }
-        },
-        "job_title_2": {
-          "type": "Text",
-          "config": {
-            "label": "Job Title 2",
-            "placeholder": ""
-          }
-        },
-        "job_title_3": {
-          "type": "Text",
-          "config": {
-            "label": "Job Title 3",
+            "label": "Job Title",
             "placeholder": ""
           }
         }

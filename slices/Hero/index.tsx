@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 
 import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import gsap from "gsap";
+import { gsap } from "gsap";
+import Bounded from "@/components/bounded";
 
 /**
  * Props for `Hero`.
@@ -19,41 +20,33 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      const tl1 = gsap.timeline()
-      const tl2 = gsap.timeline()
+      const tl = gsap.timeline()
 
-      tl1.fromTo(".name-animation",{
+      tl.fromTo(".name-animation", { 
+        x: -100,
+        opacity: 0,
+        rotate: -10, 
+      },
+      {
+        delay: 0.5,
+        x: 0, 
+        opacity: 1,
+        rotate: 0,
+        ease: "elastic.out(1,0.3)",
+        duration: 1,
+        transformOrigin: "left top",
+        stagger: {
+          each: 0.1,
+          from: "random",
+        }
+      })
+
+      tl.fromTo(".job-title", {
         y: 130, 
       },
       {
         y: 0, 
-        delay: 0.2,
-        duration: 0.5,
         ease: "power1.out",
-        stagger: {
-          each: 0.04,
-        }
-      })
-
-      tl2.fromTo(".job-title1",{
-        opacity: 0,
-        y: -80,
-        rotateX: 90,
-      },
-      {
-        opacity: 100,
-        y: 0,
-        rotateX: 0,
-        stagger: {
-          each: 0.02,
-        }
-      })
-      tl2.fromTo(".job-title1",{ //exit animation
-      },
-      {
-        opacity: 0,
-        y: 80,
-        rotateX: -90,
         stagger: {
           each: 0.02,
         }
@@ -65,7 +58,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
   const renderLetters = (name:KeyTextField, key:string, animation:string) => {
     if (!name) return;
-    return name.split().map((letter, index) => (
+    return name.split("").map((letter, index) => (
       <span key={index} className={`${animation} ${animation}-${key} inline-block`}>
         {letter}
       </span>
@@ -73,7 +66,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   }
 
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref={component}
@@ -86,27 +79,19 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               slice.primary.first_name + " " + slice.primary.last_name
             }
           >
-            <span className="block clip-rectangle text-slate-700">
+            <span className="block text-slate-700">
               {renderLetters(slice.primary.first_name, "first", "name-animation")}
             </span>
-            <span className="-mt-[.2em] block clip-rectangle text-slate-700">
+            <span className="-mt-[.2em] block text-slate-700">
               {renderLetters(slice.primary.last_name, "last", "name-animation")}
             </span>
           </h1>
-          <div className="basis">
-            <p className="block sit-on-top text-slate-700 text-2xl font-bold uppercase tracking-[.2em] opacity-0 md:text-4xl">
-              {renderLetters(slice.primary.job_title_1, 'title1', "job-title1")}
-            </p>
-            <p className="block sit-on-top text-slate-700 text-2xl font-bold uppercase tracking-[.2em] opacity-0 md:text-4xl">
-              {renderLetters(slice.primary.job_title_2, 'title2', "job-title2")}
-            </p>
-            <p className="block sit-on-top text-slate-700 text-2xl font-bold uppercase tracking-[.2em] opacity-0 md:text-4xl">
-              {renderLetters(slice.primary.job_title_3, 'title3', "job-title3")}
-            </p>
-          </div>
+          <span className="block clip-rectangle text-slate-700 text-2xl font-bold uppercase tracking-[.16em] md:text-4xl">
+            {renderLetters(slice.primary.job_title, 'title1', "job-title")}
+          </span>
         </div>
       </div>
-    </section>
+    </Bounded>
   );
 };
 

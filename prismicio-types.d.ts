@@ -92,34 +92,14 @@ export interface HeroSliceDefaultPrimary {
   last_name: prismic.KeyTextField;
 
   /**
-   * Job Title 1 field in *Hero → Primary*
+   * Job Title field in *Hero → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.job_title_1
+   * - **API ID Path**: hero.primary.job_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  job_title_1: prismic.KeyTextField;
-
-  /**
-   * Job Title 2 field in *Hero → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.job_title_2
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  job_title_2: prismic.KeyTextField;
-
-  /**
-   * Job Title 3 field in *Hero → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.job_title_3
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  job_title_3: prismic.KeyTextField;
+  job_title: prismic.KeyTextField;
 }
 
 /**
