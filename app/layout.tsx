@@ -6,14 +6,9 @@ import { createClient, repositoryName } from "@/prismicio";
 
 const jakartasans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const settings = await client.getSingle("settings");
-
-  return {
-    title: settings.data.meta_title,
-    description: settings.data.meta_description,
-  };
+export const metadata: Metadata = {
+  title: "Clarisse Bucu · Creative Developer",
+  description: "Clarisse Bucu's Portfolio",
 };
 
 export default function RootLayout({
